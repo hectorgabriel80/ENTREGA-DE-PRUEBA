@@ -1,0 +1,79 @@
+# Documentación técnica — Ficha Ford Mustang GT
+
+## De qué se trata
+
+Es una página de una sola vista sobre el Ford Mustang GT. Tiene los datos
+técnicos del auto, una tienda con carrito de compras, un buscador de
+modelos Ford que trae información real desde una API, un mapa con la
+ubicación, y un formulario de contacto.
+
+El objetivo era practicar HTML con estructura semántica, un diseño
+responsivo usando Flexbox y Grid, y JavaScript con interactividad,
+consumo de una API y manipulación del DOM.
+
+## Archivos del proyecto
+
+```
+/
+├── index.html
+├── css/
+│   └── styles.css
+├── js/
+│   └── script.js
+├── img/
+│   ├── auto.jpg
+│   └── productos/
+└── DOCUMENTACION.md
+```
+
+Separé el HTML, el CSS y el JS en carpetas distintas para tener todo más
+ordenado.
+
+## HTML
+
+Usé etiquetas semánticas en vez de `<div>` para todo: `<header>` con la
+navegación, `<main>` con una `<section>` para cada bloque (características,
+tienda, modelos, ubicación, contacto) y `<footer>` al final.
+
+La tabla de características va en un `<table>`, porque son datos tabulares.
+Cada producto de la tienda es un `<article>`, porque es un contenido
+independiente dentro de la grilla. La ubicación va en un `<address>`. El
+formulario tiene un `<label>` por campo y validación con `required`,
+`minlength` y `type="email"`.
+
+## CSS
+
+Usé variables en `:root` para los colores y las fuentes, así puedo
+cambiar todo desde un solo lugar. La paleta es negro, rojo y algunos
+acentos en amarillo y verde, buscando un estilo relacionado a autos
+deportivos.
+
+Usé Flexbox en la barra de navegación, en los botones y en el carrito.
+Usé Grid en el hero, en la grilla de productos y en la sección de
+ubicación. Puse dos breakpoints para que se vea bien en mobile
+(860px y 640px).
+
+El panel del carrito se abre y cierra con una clase `is-open` que le
+agrego con JavaScript, en vez de usar el atributo `hidden`.
+
+## JavaScript
+
+Todo el código está en `script.js`. Lo que hace:
+
+- Menú desplegable para mobile.
+- Carrito de compras: se puede agregar, sacar o cambiar la cantidad de
+  cada producto, y el total se recalcula solo. Se guarda en
+  `localStorage` para que no se pierda si se recarga la página.
+- Buscador de modelos Ford: consulta la API pública de la NHTSA
+  (`vpic.nhtsa.dot.gov`) y trae los modelos reales que vendió Ford en el
+  año que elijas. Mientras espera la respuesta muestra un cartel de
+  carga, y si falla muestra un mensaje de error.
+- Formulario de contacto con validación: si falta algún dato muestra el
+  error al lado del campo, sin usar `alert()`.
+- Botón para volver arriba de la página.
+
+## Ideas para seguir mejorando
+
+- Agregar un checkout simulado.
+- Guardar lo que se escribe en el formulario aunque se recargue la página.
+- Sumar un buscador o filtro de precios en la tienda.
