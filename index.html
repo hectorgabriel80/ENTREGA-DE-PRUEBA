@@ -1,73 +1,217 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ford Mustang - El Rey de la Ruta</title>
-<link rel="stylesheet" href="prueba.css"
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ficha técnica interactiva del Ford Mustang GT: especificaciones, tienda oficial, ubicación y formulario de contacto.">
+  <title>Ford Mustang GT | El Rey de la Ruta</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/prueba.css">
 </head>
 <body>
 
-    <div class="container">
-        <h1>FORD MUSTANG GT</h1>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="site-header" id="inicio">
+    <div class="header-inner">
+      <p class="brand">
+        <span class="brand-mark">GT</span>
+        <span class="brand-text">Mustang<strong>Ficha</strong></span>
+      </p>
+
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu">
+        <span></span><span></span><span></span>
+        <span class="sr-only">Abrir menú</span>
+      </button>
+
+      <nav class="site-nav" id="navMenu" aria-label="Navegación principal">
+        <ul>
+          <li><a href="#especificaciones">Características</a></li>
+          <li><a href="#tienda">Tienda</a></li>
+          <li><a href="#ubicacion">Ubicación</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <button class="cart-toggle" id="cartToggle" aria-haspopup="dialog" aria-expanded="false" aria-controls="cartPanel">
+        <span aria-hidden="true">🛒</span>
+        <span class="cart-toggle-text">Ver carrito</span>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="contenido">
+
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Pura potencia americana</p>
+        <h1>FORD <span>MUSTANG GT</span></h1>
         <p class="subtitulo">Pura potencia americana y diseño legendario.</p>
-
-        <img src="img/auto.jpg" alt="Ford Mustang Rojo" class="auto-img">
-
-        <h2>Características Técnicas</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Componente</th>
-                    <th>Especificación</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>Motor</strong></td>
-                    <td>V8 de 5.0 Litros</td>
-                </tr>
-                <tr>
-                    <td><strong>Potencia</strong></td>
-                    <td>450 Caballos de Fuerza (HP)</td>
-                </tr>
-                <tr>
-                    <td><strong>Aceleración</strong></td>
-                    <td>0 a 100 km/h en 4.3 segundos</td>
-                </tr>
-                <tr>
-                    <td><strong>Transmisión</strong></td>
-                    <td>Automática de 10 velocidades / Manual de 6</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h2>Acciones Rápidas</h2>
         <div class="btn-container">
-            <button class="btn btn-primary">Agendar Test Drive</button>
-            <button class="btn btn-secondary">Descargar Ficha PDF</button>
+          <button class="btn btn-primary" id="btnTestDrive" type="button">Agendar Test Drive</button>
+          <button class="btn btn-secondary" id="btnFicha" type="button">Descargar Ficha PDF</button>
+        </div>
+        <p class="hero-hint" id="accionFeedback" role="status" aria-live="polite"></p>
+      </div>
+
+      <figure class="hero-figure">
+        <img src="img/auto.jpg" alt="Ford Mustang Rojo" class="auto-img" width="1408" height="768">
+      </figure>
+    </section>
+
+    <section class="section" id="especificaciones" aria-labelledby="specTitle">
+      <div class="section-head">
+        <h2 id="specTitle">Características Técnicas</h2>
+      </div>
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Componente</th>
+              <th>Especificación</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Motor</strong></td>
+              <td>V8 de 5.0 Litros</td>
+            </tr>
+            <tr>
+              <td><strong>Potencia</strong></td>
+              <td>450 Caballos de Fuerza (HP)</td>
+            </tr>
+            <tr>
+              <td><strong>Aceleración</strong></td>
+              <td>0 a 100 km/h en 4.3 segundos</td>
+            </tr>
+            <tr>
+              <td><strong>Transmisión</strong></td>
+              <td>Automática de 10 velocidades / Manual de 6</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- TIENDA / CARRITO -->
+    <section class="section section-alt" id="tienda" aria-labelledby="tiendaTitle">
+      <div class="section-head">
+        <h2 id="tiendaTitle">Tienda oficial</h2>
+        <p>Merchandising para llevarte un poco del Mustang aunque todavía no tengas uno en la puerta de tu casa.</p>
+      </div>
+
+      <div class="product-grid" id="productGrid">
+        <article class="product-card" data-id="gorra" data-nombre="Gorra Mustang GT" data-precio="12000">
+          <img src="img/productos/gorra.jpg" alt="Gorra Mustang GT" class="product-img">
+          <h3>Gorra Mustang GT</h3>
+          <p class="product-price">$12.000</p>
+          <button class="btn btn-primary btn-add" type="button">Agregar al carrito</button>
+        </article>
+
+        <article class="product-card" data-id="llavero" data-nombre="Llavero GT metálico" data-precio="4500">
+          <img src="img/productos/llavero.jpg" alt="Llavero GT metálico" class="product-img">
+          <h3>Llavero GT metálico</h3>
+          <p class="product-price">$4.500</p>
+          <button class="btn btn-primary btn-add" type="button">Agregar al carrito</button>
+        </article>
+
+        <article class="product-card" data-id="remera" data-nombre="Remera oficial" data-precio="18500">
+          <img src="img/productos/remera.jpg" alt="Remera oficial" class="product-img">
+          <h3>Remera oficial</h3>
+          <p class="product-price">$18.500</p>
+          <button class="btn btn-primary btn-add" type="button">Agregar al carrito</button>
+        </article>
+
+        <article class="product-card" data-id="miniatura" data-nombre="Miniatura a escala 1:24" data-precio="27000">
+          <img src="img/productos/miniatura.jpg" alt="Miniatura a escala 1:24" class="product-img">
+          <h3>Miniatura a escala 1:24</h3>
+          <p class="product-price">$27.000</p>
+          <button class="btn btn-primary btn-add" type="button">Agregar al carrito</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="ubicacion" aria-labelledby="ubicacionTitle">
+      <div class="section-head">
+        <h2 id="ubicacionTitle">Dónde estamos</h2>
+        <p>Visitanos para ver el Mustang en persona y hacer tu test drive.</p>
+      </div>
+
+      <div class="location-grid">
+        <div class="map-container">
+          <iframe
+            title="Mapa de ubicación"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=-58.4176%2C-34.6118%2C-58.3576%2C-34.5718&layer=mapnik&marker=-34.5918%2C-58.3876"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
         </div>
 
-        <h2>¿Querés saber más? Conectate con nosotros</h2>
-        <form>
-            <div class="form-group">
-                <label for="nombre">Nombre Completo:</label>
-                <input type="text" id="nombre" placeholder="Ej: Juan Pérez" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="email">Correo Electrónico:</label>
-                <input type="email" id="email" placeholder="ejemplo@correo.com" required>
-            </div>
+        <address class="location-info">
+          <p><strong>Concesionaria Mustang GT</strong></p>
+          <p>Av. Siempre Viva 1234, Buenos Aires, Argentina</p>
+          <p>Lunes a sábado de 9 a 19 h</p>
+          <p><a href="https://www.openstreetmap.org/?mlat=-34.5918&mlon=-58.3876#map=15/-34.5918/-58.3876" target="_blank" rel="noopener noreferrer">Ver en mapa completo ↗</a></p>
+        </address>
+      </div>
+    </section>
 
-            <div class="form-group">
-                <label for="mensaje">Consulta:</label>
-                <textarea id="mensaje" rows="4" placeholder="Dejanos tu mensaje..."></textarea>
-            </div>
+    <section class="section section-alt" id="contacto" aria-labelledby="contactoTitle">
+      <div class="section-head">
+        <h2 id="contactoTitle">¿Querés saber más? Conectate con nosotros</h2>
+      </div>
 
-            <button type="submit" class="btn btn-submit">Enviar Solicitud</button>
-        </form>
+      <form class="contact-form" id="contactForm" novalidate>
+        <div class="form-group">
+          <label for="nombre">Nombre Completo:</label>
+          <input type="text" id="nombre" name="nombre" placeholder="Ej: Juan Pérez" required minlength="3">
+          <span class="form-error" id="errorNombre"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Correo Electrónico:</label>
+          <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" required>
+          <span class="form-error" id="errorEmail"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="mensaje">Consulta:</label>
+          <textarea id="mensaje" name="mensaje" rows="4" placeholder="Dejanos tu mensaje..." required minlength="10"></textarea>
+          <span class="form-error" id="errorMensaje"></span>
+        </div>
+
+        <button type="submit" class="btn btn-submit">Enviar Solicitud</button>
+        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+  </main>
+
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <aside class="cart-panel" id="cartPanel" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
+    <div class="cart-panel-head">
+      <h2 id="cartTitle">Tu carrito</h2>
+      <button class="cart-close" id="cartClose" type="button" aria-label="Cerrar carrito">✕</button>
     </div>
 
+    <ul class="cart-items" id="cartItems">
+      <li class="cart-empty" id="cartEmpty">Todavía no agregaste nada.</li>
+    </ul>
+
+    <div class="cart-footer">
+      <p class="cart-total">Total: <span id="cartTotal">$0</span></p>
+      <button class="btn btn-submit" id="btnVaciarCarrito" type="button">Vaciar carrito</button>
+    </div>
+  </aside>
+
+  <footer class="site-footer">
+    <p>2026 - Ford Mustang GT Derechos Reservados</p>
+  </footer>
+
+  <script src="js/script.js" defer></script>
 </body>
 </html>
